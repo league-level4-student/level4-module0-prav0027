@@ -19,7 +19,7 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 	private Timer timer;
 	
 	//1. Create a 2D array of Cells. Do not initialize it.
-
+Cell[][] cell;
 	
 	
 	public WorldPanel(int w, int h, int cpr) {
@@ -81,7 +81,11 @@ public class WorldPanel extends JPanel implements MouseListener, ActionListener 
 		int[][] livingNeighbors = new int[cellsPerRow][cellsPerRow];
 		
 		//8. check if each cell should live or die
-	
+		for(int i=0; i<cell.length; i++) {
+			for(int j=0; j<cell[i].length; j++) {
+				cell[i][j].liveOrDie(livingNeighbors[i][j]);
+			}
+		}
 		
 		
 		

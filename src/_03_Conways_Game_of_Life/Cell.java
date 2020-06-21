@@ -10,6 +10,7 @@ public class Cell implements Drawable{
 
 	private int cellSize;
 	
+	int numbe;
 	
 	public Cell(int x, int y, int size) {
 		this.x = x;
@@ -28,7 +29,19 @@ public class Cell implements Drawable{
 	 * (source: Wikipedia)
 	 * */
 	public void liveOrDie(int numNeighbors) {
-		
+		numbe = numNeighbors;
+		if(isAlive==true && numNeighbors<2) {
+			isAlive=false;
+		}
+		if(isAlive==true && (numNeighbors==3 || numNeighbors==2)) {
+			isAlive=true;
+		}
+		if(isAlive==true && numNeighbors>3) {
+			isAlive=false;
+		}
+		if(isAlive==false && numNeighbors==3) {
+			isAlive=true;
+		}
 	}
 	
 	public int getX() {
@@ -44,8 +57,16 @@ public class Cell implements Drawable{
 	//    draws empty square if cell is dead
 	@Override
 	public void draw(Graphics g) {
-	
-		
+		if(isAlive==true) {
+			g.setColor(Color.red);
+			g.fillRect(x, y, cellSize, cellSize);
+		}		
+		else if(isAlive==false) {
+			g.setColor(Color.black);
+			g.fillRect(x, y, cellSize, cellSize);
+		}
+		g.setColor(Color.white);
+		g.drawString(numbe+"", x, y+cellSize);
 		
 		
 		

@@ -29,8 +29,10 @@ Cell[][] cell;
 		this.cellsPerRow = cpr;
 	
 		//2. Calculate the cell size.
+
 		
 		//3. Initialize the cell array to the appropriate size.
+
 		
 		//3. Iterate through the array and initialize each cell.
 		//   Don't forget to consider the cell's dimensions when 
@@ -97,7 +99,19 @@ Cell[][] cell;
 	//   living neighbors there are of the 
 	//   cell identified by x and y
 	public int getLivingNeighbors(int x, int y){
-		return 0;
+		int output=0;
+		for(int i=x-1; i<2; i++) {
+			for(int j=y-1; j<2; j++) {
+				if(i>=0 && i<=cell.length && j>=0 && j<=cell[0].length) {
+					if(x!=i||y!=j) {
+						if(cell[i][j].isAlive) {
+							output++;
+						}
+					}
+				}
+			}
+		}
+		return output;
 	}
 
 	@Override
